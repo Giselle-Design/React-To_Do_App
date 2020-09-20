@@ -54,24 +54,28 @@ class Todo extends Component {
         result = (
           //inside the form if you have button to do sth
           //you must add method inside the form tag in blew you have just button
-          <form onSubmit={this.handleUpdate}>
-            <input type="text"
-            value={this.state.task}
-            name="task"
-            onChange={this.handleChange}/>
-            <button>Save</button>
-          </form>
+          <div className="Todo">
+              <form className="Todo-edit-form" onSubmit={this.handleUpdate}>
+                <input type="text"
+                value={this.state.task}
+                name="task"
+                onChange={this.handleChange}/>
+                <button>Save</button>
+              </form>
+          </div>
         );
-      }
-      else {
+      } else {
         result = (
           //when you want to use a button and do sth you must to add inline method
           // inside your button tag. first define it inside the class then bind it.
-          <div>
-              <button onClick={this.toggleForm}>Edit</button>
-              <button onClick={this.handleRemove}>Delete</button>
-              <li className={this.props.completed ? 'completed' : ''}
-              onClick={this.handleToggle}>{this.props.task}</li>
+          <div className="Todo">
+            <li className={this.props.completed ? "Todo-task completed" : "Todo-task"}
+            onClick={this.handleToggle}>{this.props.task}
+            </li>
+            <div className="Todo-buttons">
+                <button onClick={this.toggleForm}><i class="fas fa-edit"/></button>
+                <button onClick={this.handleRemove}><i class="fas fa-trash-alt"/></button>
+            </div>
           </div>
         );
       }
